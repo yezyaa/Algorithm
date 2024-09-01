@@ -1,24 +1,23 @@
-import java.util.Arrays;
-
 class Solution {
-    public int solution(int[][] sizes) {       
-        int max_w = 0; // 가로 길이
-        int max_h = 0; // 세로 길이
-        
+    public int solution(int[][] sizes) {
+        int x = 0; // 가로와 세로 중 큰 값을 가로 길이로 설정
+        int y = 0; // 가로와 세로 중 작은 값을 세로 길이로 설정
+
+        // 세로의 길이가 가로의 길이 보다 클 경우 가로 세로 길이 교체
         for (int i = 0; i < sizes.length; i++) {
-            // 가로 길이가 세로 길이보다 작으면 위치를 바꿔준다.
             if (sizes[i][0] < sizes[i][1]) {
                 int temp = sizes[i][0];
                 sizes[i][0] = sizes[i][1];
                 sizes[i][1] = temp;
             }
-            
-            // 최대 가로 길이와 최대 세로 길이를 갱신한다.
-            if (max_w < sizes[i][0])
-                max_w = sizes[i][0];
-            if (max_h < sizes[i][1])
-                max_h = sizes[i][1];
+
+            if (x < sizes[i][0])
+                x = sizes[i][0];
+
+            if (y < sizes[i][1])
+                y = sizes[i][1];
         }
-        return max_w * max_h;
+
+        return x * y;
     }
 }
